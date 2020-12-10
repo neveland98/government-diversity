@@ -34,6 +34,12 @@ public class PostgresDiversityDao implements DiversityDao {
         return template.query("SELECT * FROM people;",new PersonMapper());
     }
 
+    @Override
+    public Person addPerson(Person toAdd) {
+        return template.queryForObject("INSERT INTO \"people\" (\"firstName\",\"lastName\",\"birthYear\",\"gender\",\"race\",\"party\") " +
+                "VALUES ('"+ toAdd.getFirstName() +"','"+ toAdd.getLastName() +"','"+ toAdd.getBirthYear() +"','"+ toAdd.getGender() +"','"+ toAdd.getRace() +"','"+ toAdd.getParty() +"') RETURNING *;",new PersonMapper());
+    }
+
     private class PersonMapper implements RowMapper<Person> {
         @Override
         public Person mapRow(ResultSet resultSet, int i) throws SQLException {

@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface DiversityDao {
     List<Person> getAllPeople();
+    Person addPerson(Person toAdd);
 
     void reset();
 }
