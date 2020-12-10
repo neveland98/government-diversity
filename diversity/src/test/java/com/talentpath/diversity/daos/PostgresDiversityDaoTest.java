@@ -1,9 +1,6 @@
 package com.talentpath.diversity.daos;
 
-import com.talentpath.diversity.models.Gender;
-import com.talentpath.diversity.models.Party;
-import com.talentpath.diversity.models.Person;
-import com.talentpath.diversity.models.Race;
+import com.talentpath.diversity.models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -46,6 +43,33 @@ class PostgresDiversityDaoTest {
         assertEquals(person1,allPeople.get(0));
         assertEquals(person2,allPeople.get(1));
         assertEquals(person3,allPeople.get(2));
+
+    }
+
+    @Test
+    void getAllTerms() {
+        Person person1 = new Person("John","Madden",1930,Gender.M,Race.WHITE,Party.LIBERTARIAN);
+        Person person2 = new Person("Joe","Biden",1942,Gender.M,Race.WHITE,Party.DEMOCRAT);
+        person1.setId(1);
+        person2.setId(2);
+
+        Term term1 = new Term(person1,1971,1974,"TX",Position.SENATE);
+        Term term2 = new Term(person1,1975,1978,"TX",Position.SENATE);
+        Term term3 = new Term(person2,2009,2013,"DC",Position.GOVERNOR);
+
+        dao.addPerson(person1);
+        dao.addPerson(person2);
+
+        dao.addTerm(term1);
+        dao.addTerm(term2);
+        dao.addTerm(term3);
+
+        List<Term> allTerms = dao.getAllTerms();
+
+        assertEquals(3,allTerms.size());
+        assertEquals(term1,allTerms.get(0));
+        assertEquals(term2,allTerms.get(1));
+        assertEquals(term3,allTerms.get(2));
 
     }
 }
