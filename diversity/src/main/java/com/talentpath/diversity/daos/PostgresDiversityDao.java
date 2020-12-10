@@ -31,13 +31,13 @@ public class PostgresDiversityDao implements DiversityDao {
 
     @Override
     public List<Person> getAllPeople() {
-        return template.query("SELECT * FROM people;",new PersonMapper());
+        return template.query("SELECT * FROM \"people\" SORT BY \"id\" ASC;",new PersonMapper());
     }
 
     @Override
     public Person addPerson(Person toAdd) {
         return template.queryForObject("INSERT INTO \"people\" (\"firstName\",\"lastName\",\"birthYear\",\"gender\",\"race\",\"party\") " +
-                "VALUES ('"+ toAdd.getFirstName() +"','"+ toAdd.getLastName() +"','"+ toAdd.getBirthYear() +"','"+ toAdd.getGender() +"','"+ toAdd.getRace() +"','"+ toAdd.getParty() +"') RETURNING * SORT BY \"id\" ASC;",new PersonMapper());
+                "VALUES ('"+ toAdd.getFirstName() +"','"+ toAdd.getLastName() +"','"+ toAdd.getBirthYear() +"','"+ toAdd.getGender() +"','"+ toAdd.getRace() +"','"+ toAdd.getParty() +"') RETURNING *;",new PersonMapper());
     }
 
     private class PersonMapper implements RowMapper<Person> {
