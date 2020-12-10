@@ -67,4 +67,28 @@ public class Term {
     public void setPosition(Position position) {
         this.position = position;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Term term = (Term) o;
+
+        if (person != null ? !person.equals(term.person) : term.person != null) return false;
+        if (termStart != null ? !termStart.equals(term.termStart) : term.termStart != null) return false;
+        if (termEnd != null ? !termEnd.equals(term.termEnd) : term.termEnd != null) return false;
+        if (region != null ? !region.equals(term.region) : term.region != null) return false;
+        return position == term.position;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = person != null ? person.hashCode() : 0;
+        result = 31 * result + (termStart != null ? termStart.hashCode() : 0);
+        result = 31 * result + (termEnd != null ? termEnd.hashCode() : 0);
+        result = 31 * result + (region != null ? region.hashCode() : 0);
+        result = 31 * result + (position != null ? position.hashCode() : 0);
+        return result;
+    }
 }
