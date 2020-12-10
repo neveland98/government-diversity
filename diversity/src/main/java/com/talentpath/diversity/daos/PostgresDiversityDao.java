@@ -23,6 +23,13 @@ public class PostgresDiversityDao implements DiversityDao {
     private JdbcTemplate template;
 
     @Override
+    public void reset() {
+        template.update("TRUNCATE \"people\",\"terms\" RESTART IDENTITY;\n" +
+                "ALTER SEQUENCE \"people_id_seq\" RESTART;\n" +
+                "ALTER SEQUENCE \"terms_termId_seq\" RESTART;");
+    }
+
+    @Override
     public List<Person> getAllPeople() {
         return template.query("SELECT * FROM people;",new PersonMapper());
     }
