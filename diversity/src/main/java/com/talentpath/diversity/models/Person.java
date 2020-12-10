@@ -2,21 +2,20 @@ package com.talentpath.diversity.models;
 
 public class Person {
 
-    Integer personId;
+    Integer id;
     String firstName;
     String lastName;
     Integer birthYear;
     Gender gender;
-    String race;
-    String ethnicity;
+    Race race;
     Party party;
 
-    public Integer getPersonId() {
-        return personId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setPersonId(Integer personId) {
-        this.personId = personId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -51,20 +50,12 @@ public class Person {
         this.gender = gender;
     }
 
-    public String getRace() {
+    public Race getRace() {
         return race;
     }
 
-    public void setRace(String race) {
+    public void setRace(Race race) {
         this.race = race;
-    }
-
-    public String getEthnicity() {
-        return ethnicity;
-    }
-
-    public void setEthnicity(String ethnicity) {
-        this.ethnicity = ethnicity;
     }
 
     public Party getParty() {
