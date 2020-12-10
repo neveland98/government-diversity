@@ -31,7 +31,7 @@ public class PostgresDiversityDao implements DiversityDao {
 
     @Override
     public List<Person> getAllPeople() {
-        return template.query("SELECT * FROM \"people\" SORT BY \"id\" ASC;",new PersonMapper());
+        return template.query("SELECT * FROM \"people\" ORDER BY \"id\" ASC;",new PersonMapper());
     }
 
     @Override
