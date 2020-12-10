@@ -2,6 +2,7 @@ package com.talentpath.diversity.controllers;
 
 
 import com.talentpath.diversity.models.Person;
+import com.talentpath.diversity.models.Term;
 import com.talentpath.diversity.services.DiversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,5 +22,8 @@ public class DiversityController {
 
     @GetMapping("/allPeople")
     public List<Person> getAllPeople() {return service.getAllPeople();}
+
+    @GetMapping("/allTerms")
+    public List<Term> getAllTerms() {return service.getAllTerms();}
 
 }
