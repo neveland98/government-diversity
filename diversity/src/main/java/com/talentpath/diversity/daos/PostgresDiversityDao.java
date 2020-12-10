@@ -37,7 +37,7 @@ public class PostgresDiversityDao implements DiversityDao {
     @Override
     public Person addPerson(Person toAdd) {
         return template.queryForObject("INSERT INTO \"people\" (\"firstName\",\"lastName\",\"birthYear\",\"gender\",\"race\",\"party\") " +
-                "VALUES ('"+ toAdd.getFirstName() +"','"+ toAdd.getLastName() +"','"+ toAdd.getBirthYear() +"','"+ toAdd.getGender() +"','"+ toAdd.getRace() +"','"+ toAdd.getParty() +"') RETURNING *;",new PersonMapper());
+                "VALUES ('"+ toAdd.getFirstName() +"','"+ toAdd.getLastName() +"','"+ toAdd.getBirthYear() +"','"+ toAdd.getGender() +"','"+ toAdd.getRace() +"','"+ toAdd.getParty() +"') RETURNING * SORT BY \"id\" ASC;",new PersonMapper());
     }
 
     private class PersonMapper implements RowMapper<Person> {
