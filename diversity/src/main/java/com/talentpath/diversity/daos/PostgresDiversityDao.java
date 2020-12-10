@@ -33,7 +33,7 @@ public class PostgresDiversityDao implements DiversityDao {
 
     @Override
     public List<Term> getAllTerms() {
-        return template.query("SELECT * FROM \"terms\" t, \"people\" p ORDER BY \"termStart\" ASC, \"termEnd\" ASC, \"lastName\" ASC;",new TermMapper());
+        return template.query("SELECT * FROM \"terms\" t, \"people\" p WHERE t.\"personId\"=p.\"id\" ORDER BY \"termStart\" ASC, \"termEnd\" ASC, \"lastName\" ASC;",new TermMapper());
     }
 
     @Override
@@ -44,8 +44,9 @@ public class PostgresDiversityDao implements DiversityDao {
 
     @Override
     public Term addTerm(Term toAdd) {
-        Integer termId =  template.queryForObject("INSERT INTO \"terms\" (\"personId\",\"termStart\",\"termEnd\",\"region\",\"position\") VALUES ('1','1908','1890','TX','GOVERNOR') RETURNING \"termId\";",new TermIdMapper());
-        return template.queryForObject("SELECT * FROM \"terms\" t, \"people\" p WHERE \"termId\"='"+ termId +"';",new TermMapper());
+        Integer termId =  template.queryForObject("INSERT INTO \"terms\" (\"personId\",\"termStart\",\"termEnd\",\"region\",\"position\")" +
+                " VALUES ('"+ toAdd.getPerson().getId() +"','"+ toAdd.getTermStart() +"','"+ toAdd.getTermEnd() +"','"+ toAdd.getRegion() +"','"+ toAdd.getPosition() +"') RETURNING \"termId\";",new TermIdMapper());
+        return template.queryForObject("SELECT * FROM \"terms\" t, \"people\" p WHERE t.\"termId\"='"+ termId +"' AND t.\"personId\"=p.\"id\";",new TermMapper());
     }
 
     private class PersonMapper implements RowMapper<Person> {
