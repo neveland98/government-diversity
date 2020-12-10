@@ -9,6 +9,17 @@ public class Term {
     String region;
     Position position;
 
+    public Term() {}
+
+    public Term(Person person, Integer termStart, Integer termEnd, String region, Position position) {
+        this.termId = -1;
+        this.person = person;
+        this.termStart = termStart;
+        this.termEnd = termEnd;
+        this.region = region;
+        this.position = position;
+    }
+
     public Integer getTermId() {
         return termId;
     }
