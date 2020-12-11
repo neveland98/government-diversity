@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../Person';
+import { PersonService } from '../person.service';
+
 
 @Component({
   selector: 'app-all-people',
@@ -8,19 +10,19 @@ import { Person } from '../Person';
 })
 export class AllPeopleComponent implements OnInit {
 
-  person: Person = {
-    id:1,
-    firstName:'Joe',
-    lastName:'Aitken',
-    birthYear: 1997,
-    gender: 'M',
-    race: 'WHITE',
-    party: 'INDEPENDENT'
-  }
-  
-  constructor() { }
+  people: Person[];
+
+  constructor(private personService: PersonService) { }
 
   ngOnInit(): void {
+    this.getAllPeople();
+  }
+
+  getAllPeople(): void{
+    this.personService.getAllPeople()
+      .subscribe(allPeople => {
+        this.people = allPeople;
+      });
   }
 
 }

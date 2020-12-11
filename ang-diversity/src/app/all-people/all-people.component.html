@@ -1,2 +1,22 @@
-<h2>{{person.firstName}}</h2>
 
+<table>
+    <tr>
+        <th>id</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>birthYear</th>
+        <th>gender</th>
+        <th>race</th>
+        <th>party</th>
+    </tr>
+    
+    <tr *ngFor="let person of people">
+        <td>{{person.id}}</td>
+        <td>{{person.firstName}}</td>
+        <td>{{person.lastName}}</td>
+        <td>{{person.birthYear}}</td>
+        <td>{{person.gender}}</td>
+        <td>{{person.race}}</td>
+        <td>{{person.party}}</td>
+    </tr>
+</table>
