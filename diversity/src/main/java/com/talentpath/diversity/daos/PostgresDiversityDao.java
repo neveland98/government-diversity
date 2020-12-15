@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Locale;
 
 @Component
 @Profile({"daotesting","production"})
@@ -54,10 +55,10 @@ public class PostgresDiversityDao implements DiversityDao {
         public Person mapRow(ResultSet resultSet, int i) throws SQLException {
             Person toReturn = new Person();
             toReturn.setId(resultSet.getInt("id"));
-            toReturn.setGender(Gender.valueOf(resultSet.getString("gender")));
+            toReturn.setGender(Gender.valueOf(resultSet.getString("gender").toUpperCase()));
             toReturn.setFirstName(resultSet.getString("firstName"));
             toReturn.setLastName(resultSet.getString("lastName"));
-            toReturn.setRace(Race.valueOf(resultSet.getString("race")));
+            toReturn.setRace(Race.valueOf(resultSet.getString("race").toUpperCase()));
             toReturn.setBirthYear(resultSet.getInt("birthYear"));
             return toReturn;
 
@@ -71,16 +72,16 @@ public class PostgresDiversityDao implements DiversityDao {
             Person toAdd = new Person();
             toReturn.setTermId(resultSet.getInt("termId"));
             toReturn.setRegion(resultSet.getString("region"));
-            toReturn.setPosition(Position.valueOf(resultSet.getString("position")));
+            toReturn.setPosition(Position.valueOf(resultSet.getString("position").toUpperCase()));
             toReturn.setTermStart(resultSet.getInt("termStart"));
             toReturn.setTermEnd(resultSet.getInt("termEnd"));
-            toReturn.setParty(Party.valueOf(resultSet.getString("party")));
+            toReturn.setParty(Party.valueOf(resultSet.getString("party").toUpperCase()));
 
             toAdd.setId(resultSet.getInt("id"));
-            toAdd.setGender(Gender.valueOf(resultSet.getString("gender")));
+            toAdd.setGender(Gender.valueOf(resultSet.getString("gender").toUpperCase()));
             toAdd.setFirstName(resultSet.getString("firstName"));
             toAdd.setLastName(resultSet.getString("lastName"));
-            toAdd.setRace(Race.valueOf(resultSet.getString("race")));
+            toAdd.setRace(Race.valueOf(resultSet.getString("race").toUpperCase()));
             toAdd.setBirthYear(resultSet.getInt("birthYear"));
 
             toReturn.setPerson(toAdd);
