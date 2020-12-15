@@ -8,7 +8,7 @@ import { Term } from './Term';
 })
 export class TermService {
 
-  private allTermsUrl = 'http://localhost:8080/api/diversity/allTerms';
+  private allTermsUrl = 'http://3.135.237.38/api/diversity/allTerms';
   
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

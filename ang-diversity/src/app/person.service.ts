@@ -8,7 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PersonService {
-  private allPeopleUrl = 'http://localhost:8080/api/diversity/allPeople';
+  private allPeopleUrl = 'http://3.135.237.38/api/diversity/allPeople';
   
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
