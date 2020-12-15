@@ -7,4 +7,5 @@ export interface Term{
     termEnd: number;
     region: string;
     position: string;
+    party: String;
 }

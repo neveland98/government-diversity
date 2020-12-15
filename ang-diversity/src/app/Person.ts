@@ -5,5 +5,4 @@ export interface Person{
     birthYear: number;
     gender: string;
     race: string;
-    party: string;
 }
