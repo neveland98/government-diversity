@@ -8,7 +8,6 @@ public class Person {
     Integer birthYear;
     Gender gender;
     Race race;
-    Party party;
 
     public Person() {}
 
@@ -19,16 +18,14 @@ public class Person {
      * @param birthYear Birth year.
      * @param gender Gender.
      * @param race Race.
-     * @param party Party.
      */
-    public Person(String firstName,String lastName,Integer birthYear,Gender gender,Race race,Party party) {
+    public Person(String firstName,String lastName,Integer birthYear,Gender gender,Race race) {
         this.id = -1;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthYear = birthYear;
         this.gender = gender;
         this.race = race;
-        this.party = party;
     }
 
     public Integer getId() {
@@ -79,14 +76,6 @@ public class Person {
         this.race = race;
     }
 
-    public Party getParty() {
-        return party;
-    }
-
-    public void setParty(Party party) {
-        this.party = party;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -98,8 +87,7 @@ public class Person {
         if (lastName != null ? !lastName.equals(person.lastName) : person.lastName != null) return false;
         if (birthYear != null ? !birthYear.equals(person.birthYear) : person.birthYear != null) return false;
         if (gender != person.gender) return false;
-        if (race != person.race) return false;
-        return party == person.party;
+        return race == person.race;
     }
 
     @Override
@@ -109,7 +97,6 @@ public class Person {
         result = 31 * result + (birthYear != null ? birthYear.hashCode() : 0);
         result = 31 * result + (gender != null ? gender.hashCode() : 0);
         result = 31 * result + (race != null ? race.hashCode() : 0);
-        result = 31 * result + (party != null ? party.hashCode() : 0);
         return result;
     }
 }

@@ -8,16 +8,18 @@ public class Term {
     Integer termEnd;
     String region;
     Position position;
+    Party party;
 
     public Term() {}
 
-    public Term(Person person, Integer termStart, Integer termEnd, String region, Position position) {
+    public Term(Person person, Integer termStart, Integer termEnd, String region, Position position, Party party) {
         this.termId = -1;
         this.person = person;
         this.termStart = termStart;
         this.termEnd = termEnd;
         this.region = region;
         this.position = position;
+        this.party = party;
     }
 
     public Integer getTermId() {
@@ -68,6 +70,10 @@ public class Term {
         this.position = position;
     }
 
+    public Party getParty() { return party; }
+
+    public void setParty(Party party) { this.party = party; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -79,6 +85,7 @@ public class Term {
         if (termStart != null ? !termStart.equals(term.termStart) : term.termStart != null) return false;
         if (termEnd != null ? !termEnd.equals(term.termEnd) : term.termEnd != null) return false;
         if (region != null ? !region.equals(term.region) : term.region != null) return false;
+        if (party != null ? !party.equals(term.party) : term.party != null) return false;
         return position == term.position;
     }
 
@@ -89,6 +96,7 @@ public class Term {
         result = 31 * result + (termEnd != null ? termEnd.hashCode() : 0);
         result = 31 * result + (region != null ? region.hashCode() : 0);
         result = 31 * result + (position != null ? position.hashCode() : 0);
+        result = 31 * result + (party != null ? party.hashCode() : 0);
         return result;
     }
 }

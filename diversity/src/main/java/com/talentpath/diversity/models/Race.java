@@ -6,6 +6,7 @@ public enum Race {
     ASIAN,
     NATIVE_AMERICAN,
     PACIFIC_ISLANDER,
+    HISPANIC,
     MULTIRACIAL,
     OTHER
 }
