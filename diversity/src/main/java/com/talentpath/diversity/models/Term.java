@@ -1,5 +1,7 @@
 package com.talentpath.diversity.models;
 
+import java.util.Objects;
+
 public class Term {
 
     Integer termId;
@@ -9,10 +11,11 @@ public class Term {
     String region;
     Position position;
     Party party;
+    Integer year;
 
     public Term() {}
 
-    public Term(Person person, Integer termStart, Integer termEnd, String region, Position position, Party party) {
+    public Term(Person person, Integer termStart, Integer termEnd, String region, Position position, Party party, Integer year) {
         this.termId = -1;
         this.person = person;
         this.termStart = termStart;
@@ -20,6 +23,7 @@ public class Term {
         this.region = region;
         this.position = position;
         this.party = party;
+        this.year = year;
     }
 
     public Integer getTermId() {
@@ -74,6 +78,10 @@ public class Term {
 
     public void setParty(Party party) { this.party = party; }
 
+    public Integer getYear() { return year; }
+
+    public void setYear(Integer year) { this.year = year; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -81,11 +89,12 @@ public class Term {
 
         Term term = (Term) o;
 
-        if (person != null ? !person.equals(term.person) : term.person != null) return false;
-        if (termStart != null ? !termStart.equals(term.termStart) : term.termStart != null) return false;
-        if (termEnd != null ? !termEnd.equals(term.termEnd) : term.termEnd != null) return false;
-        if (region != null ? !region.equals(term.region) : term.region != null) return false;
-        if (party != null ? !party.equals(term.party) : term.party != null) return false;
+        if (!Objects.equals(person, term.person)) return false;
+        if (!Objects.equals(termStart, term.termStart)) return false;
+        if (!Objects.equals(termEnd, term.termEnd)) return false;
+        if (!Objects.equals(region, term.region)) return false;
+        if (!Objects.equals(party, term.party)) return false;
+        if (!Objects.equals(year, term.year)) return false;
         return position == term.position;
     }
 
@@ -97,6 +106,7 @@ public class Term {
         result = 31 * result + (region != null ? region.hashCode() : 0);
         result = 31 * result + (position != null ? position.hashCode() : 0);
         result = 31 * result + (party != null ? party.hashCode() : 0);
+        result = 31 * result + (year != null ? year.hashCode(): 0);
         return result;
     }
 }
