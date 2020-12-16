@@ -3,8 +3,7 @@ package com.talentpath.diversity.models;
 public class Person {
 
     Integer id;
-    String firstName;
-    String lastName;
+    String name;
     Integer birthYear;
     Gender gender;
     Race race;
@@ -13,16 +12,14 @@ public class Person {
 
     /**
      * Testing constructor only.
-     * @param firstName First name.
-     * @param lastName Last name.
+     * @param name Full name.
      * @param birthYear Birth year.
      * @param gender Gender.
      * @param race Race.
      */
-    public Person(String firstName,String lastName,Integer birthYear,Gender gender,Race race) {
+    public Person(String name,Integer birthYear,Gender gender,Race race) {
         this.id = -1;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
         this.birthYear = birthYear;
         this.gender = gender;
         this.race = race;
@@ -34,22 +31,6 @@ public class Person {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public Integer getBirthYear() {
@@ -76,6 +57,10 @@ public class Person {
         this.race = race;
     }
 
+    public String getName() { return name; }
+
+    public void setName(String name) { this.name = name; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -83,8 +68,7 @@ public class Person {
 
         Person person = (Person) o;
 
-        if (firstName != null ? !firstName.equals(person.firstName) : person.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(person.lastName) : person.lastName != null) return false;
+        if (name != null ? !name.equals(person.name) : person.name != null) return false;
         if (birthYear != null ? !birthYear.equals(person.birthYear) : person.birthYear != null) return false;
         if (gender != person.gender) return false;
         return race == person.race;
@@ -92,8 +76,7 @@ public class Person {
 
     @Override
     public int hashCode() {
-        int result = firstName != null ? firstName.hashCode() : 0;
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        int result = name != null? name.hashCode() : 0;
         result = 31 * result + (birthYear != null ? birthYear.hashCode() : 0);
         result = 31 * result + (gender != null ? gender.hashCode() : 0);
         result = 31 * result + (race != null ? race.hashCode() : 0);

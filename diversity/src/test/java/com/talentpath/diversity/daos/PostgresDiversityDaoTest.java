@@ -29,9 +29,9 @@ class PostgresDiversityDaoTest {
 
     @Test
     void getAllPeople() {
-        Person person1 = new Person("Joe","Aitken",1997, Gender.M, Race.WHITE);
-        Person person2 = new Person("Nathaniel","Eveland",1998,Gender.M,Race.WHITE);
-        Person person3 = new Person("Joe","Biden",1942,Gender.M,Race.WHITE);
+        Person person1 = new Person("Joe Aitken",1997, Gender.M, Race.WHITE);
+        Person person2 = new Person("Nathaniel Eveland",1998,Gender.M,Race.WHITE);
+        Person person3 = new Person("Joe Biden",1942,Gender.M,Race.WHITE);
 
         dao.addPerson(person1);
         dao.addPerson(person2);
@@ -48,14 +48,14 @@ class PostgresDiversityDaoTest {
 
     @Test
     void getAllTerms() {
-        Person person1 = new Person("John","Madden",1930,Gender.M,Race.WHITE);
-        Person person2 = new Person("Joe","Biden",1942,Gender.M,Race.WHITE);
+        Person person1 = new Person("John Madden",1930,Gender.M,Race.WHITE);
+        Person person2 = new Person("Joe Biden",1942,Gender.M,Race.WHITE);
         person1.setId(1);
         person2.setId(2);
 
-        Term term1 = new Term(person1,1971,1974,"TX",Position.SENATE,Party.LIBERTARIAN);
-        Term term2 = new Term(person1,1975,1978,"TX",Position.SENATE,Party.LIBERTARIAN);
-        Term term3 = new Term(person2,2009,2013,"DC",Position.GOVERNOR, Party.DEMOCRAT);
+        Term term1 = new Term(person1,1971,1974,"TX",Position.SENATE,Party.LIBERTARIAN,1971);
+        Term term2 = new Term(person1,1975,1978,"TX",Position.SENATE,Party.LIBERTARIAN,1975);
+        Term term3 = new Term(person2,2009,2013,"DC",Position.GOVERNOR, Party.DEMOCRAT,2009);
 
         dao.addPerson(person1);
         dao.addPerson(person2);

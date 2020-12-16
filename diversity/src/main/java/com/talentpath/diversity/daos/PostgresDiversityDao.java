@@ -34,19 +34,19 @@ public class PostgresDiversityDao implements DiversityDao {
 
     @Override
     public List<Term> getAllTerms() {
-        return template.query("SELECT * FROM \"terms\" t, \"people\" p WHERE t.\"personId\"=p.\"id\" ORDER BY \"termStart\" ASC, \"termEnd\" ASC, \"lastName\" ASC;",new TermMapper());
+        return template.query("SELECT * FROM \"terms\" t, \"people\" p WHERE t.\"personId\"=p.\"id\" ORDER BY \"termStart\" ASC, \"termEnd\" ASC, \"name\" ASC;",new TermMapper());
     }
 
     @Override
     public Person addPerson(Person toAdd) {
-        return template.queryForObject("INSERT INTO \"people\" (\"firstName\",\"lastName\",\"birthYear\",\"gender\",\"race\") " +
-                "VALUES ('"+ toAdd.getFirstName() +"','"+ toAdd.getLastName() +"','"+ toAdd.getBirthYear() +"','"+ toAdd.getGender() +"','"+ toAdd.getRace() +"') RETURNING *;",new PersonMapper());
+        return template.queryForObject("INSERT INTO \"people\" (\"name\",\"birthYear\",\"gender\",\"race\") " +
+                "VALUES ('"+toAdd.getName()+"','"+ toAdd.getBirthYear() +"','"+ toAdd.getGender() +"','"+ toAdd.getRace() +"') RETURNING *;",new PersonMapper());
     }
 
     @Override
     public Term addTerm(Term toAdd) {
-        Integer termId =  template.queryForObject("INSERT INTO \"terms\" (\"personId\",\"termStart\",\"termEnd\",\"region\",\"position\",\"party\")" +//todo:complete insert with party
-                " VALUES ('"+ toAdd.getPerson().getId() +"','"+ toAdd.getTermStart() +"','"+ toAdd.getTermEnd() +"','"+ toAdd.getRegion() +"','"+ toAdd.getPosition() +"','"+ toAdd.getParty() +"') RETURNING \"termId\";",new TermIdMapper());
+        Integer termId =  template.queryForObject("INSERT INTO \"terms\" (\"personId\",\"termStart\",\"termEnd\",\"region\",\"position\",\"party\",\"year\")" +
+                " VALUES ('"+ toAdd.getPerson().getId() +"','"+ toAdd.getTermStart() +"','"+ toAdd.getTermEnd() +"','"+ toAdd.getRegion() +"','"+ toAdd.getPosition() +"','"+ toAdd.getParty() +"','"+ toAdd.getYear() +"') RETURNING \"termId\";",new TermIdMapper());
         return template.queryForObject("SELECT * FROM \"terms\" t, \"people\" p WHERE t.\"termId\"='"+ termId +"' AND t.\"personId\"=p.\"id\";",new TermMapper());
     }
 
@@ -56,8 +56,7 @@ public class PostgresDiversityDao implements DiversityDao {
             Person toReturn = new Person();
             toReturn.setId(resultSet.getInt("id"));
             toReturn.setGender(Gender.valueOf(resultSet.getString("gender").toUpperCase()));
-            toReturn.setFirstName(resultSet.getString("firstName"));
-            toReturn.setLastName(resultSet.getString("lastName"));
+            toReturn.setName(resultSet.getString("name"));
             toReturn.setRace(Race.valueOf(resultSet.getString("race").toUpperCase()));
             toReturn.setBirthYear(resultSet.getInt("birthYear"));
             return toReturn;
@@ -76,11 +75,11 @@ public class PostgresDiversityDao implements DiversityDao {
             toReturn.setTermStart(resultSet.getInt("termStart"));
             toReturn.setTermEnd(resultSet.getInt("termEnd"));
             toReturn.setParty(Party.valueOf(resultSet.getString("party").toUpperCase()));
+            toReturn.setYear(resultSet.getInt("year"));
 
             toAdd.setId(resultSet.getInt("id"));
             toAdd.setGender(Gender.valueOf(resultSet.getString("gender").toUpperCase()));
-            toAdd.setFirstName(resultSet.getString("firstName"));
-            toAdd.setLastName(resultSet.getString("lastName"));
+            toAdd.setName(resultSet.getString("name"));
             toAdd.setRace(Race.valueOf(resultSet.getString("race").toUpperCase()));
             toAdd.setBirthYear(resultSet.getInt("birthYear"));
 
