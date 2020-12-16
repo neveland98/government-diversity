@@ -1,28 +1,28 @@
 <table>
     <tr>
         <th>termId</th>
-        <th>firstName</th>
-        <th>lastName</th>
+        <th>name<th></th>
         <th>birthYear</th>
         <th>gender</th>
         <th>race</th>
         <th>party</th>
         <th>termStart</th>
         <th>termEnd</th>
+        <th>year</th>
         <th>region</th>
         <th>position</th>
     </tr>
     
     <tr *ngFor="let term of terms">
         <td>{{term.termId}}</td>
-        <td>{{term.person.firstName}}</td>
-        <td>{{term.person.lastName}}</td>
+        <td>{{term.person.name}}</td>
         <td>{{term.person.birthYear}}</td>
         <td>{{term.person.gender}}</td>
         <td>{{term.person.race}}</td>
         <td>{{term.party}}</td>
         <td>{{term.termStart}}</td>
         <td>{{term.termEnd}}</td>
+        <td>{{term.year}}</td>
         <td>{{term.region}}</td>
         <td>{{term.position}}</td>
     </tr>

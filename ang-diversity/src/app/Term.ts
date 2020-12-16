@@ -5,6 +5,7 @@ export interface Term{
     person: Person;
     termStart: number;
     termEnd: number;
+    year: number;
     region: string;
     position: string;
     party: String;
