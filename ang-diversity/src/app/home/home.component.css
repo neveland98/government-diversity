@@ -1,0 +1,42 @@
+.titleDiv{
+
+    width: 100%;
+    text-align: center;
+    min-height: 80px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background:
+        url(src/assets/AmericanFlag2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: antiquewhite;
+	font-size: 30px;
+	-webkit-text-stroke: 2px black;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.topPage{
+    width: 100%;
+}
+.introDiv{
+    max-width: 600px;
+    margin: auto;
+    border: 3px solid blue;
+    text-align: center;
+}
+
+.dataDiv{
+    text-align: center;
+    width: 100%;
+}
+
+.conclusionDiv{
+    margin: auto;
+    text-align: center;
+    max-width: 600px;
+    border: 3px solid blue;
+}
