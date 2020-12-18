@@ -5,5 +5,6 @@ public enum Party {
     DEMOCRAT,
     INDEPENDENT,
     GREEN,
-    LIBERTARIAN
+    LIBERTARIAN,
+    OTHER
 }
