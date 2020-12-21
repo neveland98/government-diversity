@@ -59,11 +59,13 @@ body{
     margin: auto;
     border-style: outset;
     border-radius: 5px;
-    width: 1400px;
+    width: 1365px;
     box-shadow: 2px 4px rgba(0,0,0,.4);
     
     margin-top: 30px;
     margin-bottom: 30px;
+
+    height: 795px;
 }
 
 .bottomPage{
