@@ -64,17 +64,21 @@ body{
     
     margin-top: 30px;
     margin-bottom: 30px;
-
-    height: auto;
+    height: 900px;
 }
 
 .bottomPage{
     background-color: grey;
     height: fit-content;
     min-height: 50px;
-    width: 100%;
+   
     margin-bottom: 0;
     padding-top: 35px;
+
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 
